@@ -1,10 +1,37 @@
-const ohHey = "Hello World";
 
-console.log(ohHey);
-
+let headers = {};
 var app = {};
 
-rooster.init = function(){
+app.getCategories = function() {
+	$.ajax({
+		url: `https://api.spotify.com/v1/browse/categories/pop/playlists`,
+		method: 'GET',
+		dataType: 'JSON',
+		headers,
+		data: {
+			limit: 50
+		}
+	}).then(function(res){
+		console.log(res)
+		// app.updateSelect(res.categories.items)
+
+	})
+};
+
+app.updateSelect = function(data) {
+	console.log(data)
+}
+
+
+app.getPlaylists = function() {
+	$.ajax({
+
+	}).then(function(res) {
+		console.log(res)
+	})
+};
+
+app.init = function(){
 	$.ajax({
 		url: 'http://proxy.hackeryou.com',
 		method: 'POST',
@@ -22,9 +49,16 @@ rooster.init = function(){
 			}
 		})
 	})
-	.then((data) => {
+	.then(function(data) {
 		headers = {
 			'Authorization': `${data.token_type} ${data.access_token}`
 		}
-	})
+		app.getCategories();
+	});
+
+	
 }
+
+$(function(){
+	app.init();
+});
