@@ -67,7 +67,7 @@ musicApp.getPlaylists = function(genre) {
 			limit: 50
 		}
 	}).then(function(res) {
-		console.log(res)
+		console.log(res.playlists.items);
 		musicApp.getRandomPlaylist(res.playlists.items)
 	})
 };
@@ -85,7 +85,7 @@ musicApp.getTracks = function(playlist) {
 		dataType: 'JSON',
 		headers
 	}).then(function(res){
-		console.log(res.items);
+		console.log(res);
 		musicApp.checkTracks(res)
 	})
 };
