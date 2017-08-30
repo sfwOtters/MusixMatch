@@ -38,7 +38,7 @@ app.getCategories = function() {
 			limit: 50
 		}
 	}).then(function(res){
-		console.log(res.categories['items'])
+		console.log(res.categories['items']);
 		app.updateSelect(res.categories['items'])
 
 	})
