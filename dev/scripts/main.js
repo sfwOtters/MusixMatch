@@ -1,37 +1,8 @@
-
+let notGenres = ['toplists', 'chill', 'mood', 'party', 'workout', 'focus', 'decades', 'dinner', 'sleep', 'popculture', 'romance', 'travel', 'gaming', 'comdey'];
 let headers = {};
 var app = {};
 
-app.getCategories = function() {
-	$.ajax({
-		url: `https://api.spotify.com/v1/browse/categories/pop/playlists`,
-		method: 'GET',
-		dataType: 'JSON',
-		headers,
-		data: {
-			limit: 50
-		}
-	}).then(function(res){
-		console.log(res)
-		// app.updateSelect(res.categories.items)
-
-	})
-};
-
-app.updateSelect = function(data) {
-	console.log(data)
-}
-
-
-app.getPlaylists = function() {
-	$.ajax({
-
-	}).then(function(res) {
-		console.log(res)
-	})
-};
-
-app.init = function(){
+app.authorization = function() {
 	$.ajax({
 		url: 'http://proxy.hackeryou.com',
 		method: 'POST',
@@ -55,8 +26,39 @@ app.init = function(){
 		}
 		app.getCategories();
 	});
+};
 
-	
+app.getCategories = function() {
+	$.ajax({
+		url: `https://api.spotify.com/v1/browse/categories/`,
+		method: 'GET',
+		dataType: 'JSON',
+		headers,
+		data: {
+			limit: 50
+		}
+	}).then(function(res){
+		console.log(res.categories['items'])
+		app.updateSelect(res.categories['items'])
+
+	})
+};
+
+app.updateSelect = function(data) {
+	console.log(data)
+}
+
+
+app.getPlaylists = function() {
+	$.ajax({
+
+	}).then(function(res) {
+		console.log(res)
+	})
+};
+
+app.init = function(){
+	app.authorization();
 }
 
 $(function(){
