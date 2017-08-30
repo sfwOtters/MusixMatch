@@ -41,7 +41,6 @@ musicApp.getCategories = function() {
 	}).then(function(res){
 		console.log(res.categories['items'])
 		musicApp.updateSelect(res.categories['items'])
-
 	})
 };
 
@@ -67,8 +66,30 @@ musicApp.getPlaylists = function(genre) {
 			limit: 50
 		}
 	}).then(function(res) {
-		console.log(res)
+		musicApp.getRandomPlaylist(res.playlists.items)
 	})
+};
+
+musicApp.getRandomPlaylist = function(playlists) {
+	let randomIndex = Math.floor(Math.random() * playlists.length);
+	let chosenPlaylist = playlists[randomIndex].tracks.href;
+	musicApp.getTracks(chosenPlaylist);
+	
+};
+
+musicApp.getTracks = function(playlist) {
+	$.ajax({
+		url: `${playlist}`,
+		method: 'GET',
+		dataType: 'JSON',
+		headers
+	}).then(function(res){
+		musicApp.mapPlaylist(res.items);
+	})
+};
+
+musicApp.mapPlaylist = function(tracks) {
+	console.log(tracks);
 };
 
 musicApp.events = function(){
@@ -77,12 +98,12 @@ musicApp.events = function(){
 		let genre = $('#genres').val();
 		musicApp.getPlaylists(genre);
 	});
-}
+};
 
 musicApp.init = function(){
 	musicApp.authorization();
 	musicApp.events();
-}
+};
 
 $(function(){
 	musicApp.init();
