@@ -4,6 +4,7 @@ var musicApp = {};
 musicApp.notGenres = ['toplists', 'chill', 'mood', 'party', 'workout', 'focus', 'decades', 'dinner', 'sleep', 'popculture', 'romance', 'travel', 'gaming', 'comedy'];
 musicApp.spiceCount = 0;
 musicApp.desiredSpice = 0;
+musicApp.URI = '';
 musicApp.authorization = function() {
 	$.ajax({
 		url: 'http://proxy.hackeryou.com',
@@ -74,6 +75,8 @@ musicApp.getPlaylists = function(genre) {
 musicApp.getRandomPlaylist = function(playlists) {
 	let randomIndex = Math.floor(Math.random() * playlists.length);
 	let chosenPlaylist = playlists[randomIndex].tracks.href;
+	musicApp.URI = playlists[randomIndex].uri;
+	console.log(musicApp.URI);
 	musicApp.getTracks(chosenPlaylist);
 };
 
@@ -106,7 +109,7 @@ musicApp.checkTracks = (res) => {
 	// console.log(spicyPercentage);
 };
 musicApp.displayPlaylist = () => {
-	$('.output').append(`<iframe src="https://open.spotify.com/embed?uri=spotify:user:erebore:playlist:788MOXyTfcUb1tdw4oC7KJ&view=coverart"
+	$('.output').append(`<iframe src="https://open.spotify.com/embed?uri=${musicApp.URI}&view=coverart"
         frameborder="0" allowtransparency="true"></iframe>`)
 }
 
