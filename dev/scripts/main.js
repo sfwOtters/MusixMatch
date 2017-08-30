@@ -3,7 +3,7 @@ let headers = {};
 var musicApp = {};
 musicApp.notGenres = ['toplists', 'chill', 'mood', 'party', 'workout', 'focus', 'decades', 'dinner', 'sleep', 'popculture', 'romance', 'travel', 'gaming', 'comedy'];
 musicApp.spiceCount = 0;
-
+musicApp.desiredSpice = 0;
 musicApp.authorization = function() {
 	$.ajax({
 		url: 'http://proxy.hackeryou.com',
@@ -85,20 +85,30 @@ musicApp.getTracks = function(playlist) {
 		headers
 	}).then(function(res){
 		console.log(res.items);
-		musicApp.checkTracks(res.items)
+		musicApp.checkTracks(res)
 	})
 };
-musicApp.checkTracks = (tracks) => {
+musicApp.checkTracks = (res) => {
+	let tracks = res.items;
 	tracks.forEach(function (track){
 		if(track.track.explicit === true){
 			musicApp.spiceCount += 1;
-		}	
+		}		
 	})
-	console.log(musicApp.spiceCount)
+	// console.log(musicApp.spiceCount)
 	let spicyPercentage = Math.floor((musicApp.spiceCount / tracks.length) * 100);
-	console.log(spicyPercentage);
-	
+	if(spicyPercentage <= musicApp.desiredSpice){
+		// console.log('working')
+		musicApp.displayPlaylist();
+	} else {
+		musicApp.getRandomPlaylist();
+	}
+	// console.log(spicyPercentage);
 };
+musicApp.displayPlaylist = () => {
+	$('.output').append(`<iframe src="https://open.spotify.com/embed?uri=spotify:user:erebore:playlist:788MOXyTfcUb1tdw4oC7KJ&view=coverart"
+        frameborder="0" allowtransparency="true"></iframe>`)
+}
 
 // if explicit is = to true add 1 to the spice count
 // then compare that number to the # of songs in the playlist 
@@ -112,7 +122,9 @@ musicApp.checkTracks = (tracks) => {
 musicApp.events = function(){
 	$('form').on('submit',function(event){
 		event.preventDefault();
-		let genre = $('#genres').val();
+		let genre = $('#genres').val();	 
+		musicApp.desiredSpice = $('#spiceLevel').val();
+		console.log(musicApp.desiredSpice);
 		musicApp.getPlaylists(genre);
 		musicApp.spiceCount = 0;
 	});
