@@ -85,13 +85,8 @@ musicApp.getTracks = function(playlist) {
 		dataType: 'JSON',
 		headers
 	}).then(function(res){
-<<<<<<< HEAD
-		console.log(res);
-		musicApp.checkTracks(res.items)
-=======
 		console.log(res.items);
 		musicApp.checkTracks(res)
->>>>>>> 921bd89a0ef2756ae6c8e17700a157e97451ea6d
 	})
 };
 musicApp.checkTracks = (res) => {
