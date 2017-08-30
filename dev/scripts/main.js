@@ -1,8 +1,8 @@
 
 let headers = {};
 var musicApp = {};
-musicApp.sfwPlaylist = [];
 musicApp.notGenres = ['toplists', 'chill', 'mood', 'party', 'workout', 'focus', 'decades', 'dinner', 'sleep', 'popculture', 'romance', 'travel', 'gaming', 'comedy'];
+musicApp.spiceCount = 0;
 
 musicApp.authorization = function() {
 	$.ajax({
@@ -76,17 +76,7 @@ musicApp.getRandomPlaylist = function(playlists) {
 	let chosenPlaylist = playlists[randomIndex].tracks.href;
 	musicApp.getTracks(chosenPlaylist);
 };
-musicApp.checkTracks = (tracks) => {
-	tracks.forEach(function (track){
-		if(track.track.explicit === false){
-			musicApp.sfwPlaylist.push(track);
-		}
-	})
-	console.log(musicApp.sfwPlaylist);
-	// loop through each track in the playlist
-	// check to see which tracks are explicit
-	// if track is not explicit, push to an array of tracks
-}
+
 musicApp.getTracks = function(playlist) {
 	$.ajax({
 		url: `${playlist}`,
@@ -98,12 +88,33 @@ musicApp.getTracks = function(playlist) {
 		musicApp.checkTracks(res.items)
 	})
 };
+musicApp.checkTracks = (tracks) => {
+	tracks.forEach(function (track){
+		if(track.track.explicit === true){
+			musicApp.spiceCount += 1;
+		}	
+	})
+	console.log(musicApp.spiceCount)
+	let spicyPercentage = Math.floor((musicApp.spiceCount / tracks.length) * 100);
+	console.log(spicyPercentage);
+	
+};
+
+// if explicit is = to true add 1 to the spice count
+// then compare that number to the # of songs in the playlist 
+// caculate percantage of playlist that is spicy
+// then compare that to the users allowed spicyness
+// if equlivent or less display playslist
+// if greater than user choice generate another playlist and repeat
+// if nothing is bland enough display error message for user
+
 
 musicApp.events = function(){
 	$('form').on('submit',function(event){
 		event.preventDefault();
 		let genre = $('#genres').val();
 		musicApp.getPlaylists(genre);
+		musicApp.spiceCount = 0;
 	});
 };
 
