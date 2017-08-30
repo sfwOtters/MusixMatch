@@ -1,4 +1,4 @@
-let notGenres = ['toplists', 'chill', 'mood', 'party', 'workout', 'focus', 'decades', 'dinner', 'sleep', 'popculture', 'romance', 'travel', 'gaming', 'comdey'];
+let notGenres = ['toplists', 'chill', 'mood', 'party', 'workout', 'focus', 'decades', 'dinner', 'sleep', 'popculture', 'romance', 'travel', 'gaming', 'comedy'];
 let headers = {};
 var app = {};
 
@@ -45,9 +45,16 @@ app.getCategories = function() {
 };
 
 app.updateSelect = function(data) {
-	
+	data.forEach(function (element){
+		if(notGenres.includes(element.id) === false){
+			$('select').append(`<option value="${element.id}">${element.name}</option>`)
+		}
+	})
 }
-
+// go through every item and if it does not include the ID from not genre
+// forEach ID in array check against notGenres array 
+// if strings match don't do anything
+// if strings don't match grab name of genre (for the select option) and id of genre (for the value of the select), store in variables and template literal them
 
 app.getPlaylists = function() {
 	$.ajax({
