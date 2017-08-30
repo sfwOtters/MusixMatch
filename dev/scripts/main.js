@@ -1,6 +1,7 @@
 
 let headers = {};
 var musicApp = {};
+musicApp.sfwPlaylist = [];
 musicApp.notGenres = ['toplists', 'chill', 'mood', 'party', 'workout', 'focus', 'decades', 'dinner', 'sleep', 'popculture', 'romance', 'travel', 'gaming', 'comedy'];
 
 musicApp.authorization = function() {
@@ -74,9 +75,18 @@ musicApp.getRandomPlaylist = function(playlists) {
 	let randomIndex = Math.floor(Math.random() * playlists.length);
 	let chosenPlaylist = playlists[randomIndex].tracks.href;
 	musicApp.getTracks(chosenPlaylist);
-	
 };
-
+musicApp.checkTracks = (tracks) => {
+	tracks.forEach(function (track){
+		if(track.track.explicit === false){
+			musicApp.sfwPlaylist.push(track);
+		}
+	})
+	console.log(musicApp.sfwPlaylist);
+	// loop through each track in the playlist
+	// check to see which tracks are explicit
+	// if track is not explicit, push to an array of tracks
+}
 musicApp.getTracks = function(playlist) {
 	$.ajax({
 		url: `${playlist}`,
@@ -84,12 +94,9 @@ musicApp.getTracks = function(playlist) {
 		dataType: 'JSON',
 		headers
 	}).then(function(res){
-		musicApp.mapPlaylist(res.items);
+		console.log(res.items);
+		musicApp.checkTracks(res.items)
 	})
-};
-
-musicApp.mapPlaylist = function(tracks) {
-	console.log(tracks);
 };
 
 musicApp.events = function(){
