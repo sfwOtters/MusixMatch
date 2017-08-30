@@ -4,7 +4,7 @@ var app = {};
 
 app.getCategories = function() {
 	$.ajax({
-		url: `https://api.spotify.com/v1/browse/categories/pop/playlists`,
+		url: `https://api.spotify.com/v1/browse/categories/`,
 		method: 'GET',
 		dataType: 'JSON',
 		headers,
@@ -19,7 +19,7 @@ app.getCategories = function() {
 };
 
 app.updateSelect = function(data) {
-	console.log(data)
+	
 }
 
 

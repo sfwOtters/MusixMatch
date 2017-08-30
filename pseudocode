@@ -1,0 +1,9 @@
+// user selects genre from dropdown list
+// pass genre category to spotify API, which returns 50 playlists associated with said genre
+// choose a random playlist from these
+// make another API request to get this playlist's tracks
+// get array of track objects from randomly selected playlist
+// pass track and artist names to MusixMatch API (API request for each track)
+// check for SFWness, return new array of track objects that are SFW (no profanity)
+// take this new array and create a new playlist using the spotify API
+// append spotify player to page and play new playlist
