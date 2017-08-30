@@ -58,7 +58,7 @@ app.updateSelect = function(data) {
 
 app.getPlaylists = function() {
 	$.ajax({
-
+		
 	}).then(function(res) {
 		console.log(res)
 	})
