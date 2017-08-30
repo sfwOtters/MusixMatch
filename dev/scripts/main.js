@@ -39,7 +39,7 @@ app.getCategories = function() {
 		}
 	}).then(function(res){
 		console.log(res.categories['items'])
-		// app.updateSelect(res.categories.items)
+		app.updateSelect(res.categories['items'])
 
 	})
 };
