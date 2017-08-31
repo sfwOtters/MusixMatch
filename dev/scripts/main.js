@@ -105,7 +105,7 @@ musicApp.checkTracks = (res) => {
 	})
 	console.log(musicApp.desiredSpice)
 	let spicyPercentage = Math.floor((musicApp.spiceCount / tracks.length) * 100);
-	if(spicyPercentage <= musicApp.desiredSpice  && spicyPercentage >= musicApp.desiredSpice - 10){
+	if(spicyPercentage <= musicApp.desiredSpice){
 		// console.log('working')
 		musicApp.displayPlaylist();
 	} else {
