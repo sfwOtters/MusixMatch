@@ -140,6 +140,7 @@ musicApp.displayError = () => {
 
 musicApp.events = function(){
 	$('form').on('submit',function(event){
+		$('.output').empty();
 		event.preventDefault();
 		musicApp.genre = $('#genres').val();	 
 		musicApp.desiredSpice = $('#spiceLevel').val();

@@ -1,0 +1,57 @@
+.spiceSelect{
+	margin-top: 25px;
+}
+#genres{
+	appearance: none;
+	padding: 15px 20px;
+	background: rgba(96, 221, 181, 0.9) ;
+	// border: 2px solid $tsfwGreen;
+	border: none;
+	border-right: 1px solid $tsfwBlack;
+	display: block;
+	width: 60%;
+	float: left;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 20px;
+	color: $tsfwBlack;
+	margin: 10px 0;
+}
+#genreSubmit{
+	width: 40%;
+	float: left;
+	padding: 15px 20px;
+	background: rgba(96, 221, 181, 0.9) ;
+	border: none;
+	border-left: 1px solid $tsfwBlack;
+	appearance: none;
+	border-top-left-radius: 0;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 0;
+	color: $tsfwBlack;
+	margin: 10px 0;
+
+}
+#spiceLevel{
+	display: block;
+	width: 100%;
+	background: transparent;
+
+}
+.spiceBox{
+	background: rgba(201,122,122,0.9);
+	clear: both;
+	padding: 20px 10px;
+	border-radius: 20px;
+	label{
+		text-align-last: center;
+		margin: 10px 0;
+	}
+}
+label{
+	display: block;
+	clear: both;
+	color: $tsfwBlack;
+}
