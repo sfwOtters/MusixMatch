@@ -6,31 +6,35 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="public/styles/style.css">
+	<link href=“https://fonts.googleapis.com/css?family=Work+Sans:700” rel=“stylesheet”>
 </head>
 <body>
-	<div class="wrapper">
+	<div class="content">
 		<header>
-			<h1>Too Spicy For Work</h1>
-			<h2>Streaming SFW Music!</h2>
+			<div class="wrapper">
+				<h1>Too <span class="break spicyBreak">Spicy</span> <span class="break">for Work</span></h1>
+				<h2>How spicy do you like it?</h2>
+			</div>
 		</header>
 		<main>
-			<form>
-				<label for="genres">Select a Genre</label>
-				<select id="genres">
-					<option class="genre" selected disabled>select a genre</option>
-				</select>
-				<input type="submit" id="genreSubmit" name="">
-				<label for="spiceLevel">How spicy?</label>
-				<input type="range" id="spiceLevel" min="0" max="100" step="10">
-			</form>
-			<section class="output">
-			
-			</section>
+			<div class="wrapper">
+				<form>
+					<label for="genres">Select a Genre</label>
+					<select id="genres">
+						<option class="genre" selected disabled>select a genre</option>
+					</select>
+					<input type="submit" id="genreSubmit" name="">
+					<label for="spiceLevel">How spicy (NSFW) would you like your playlist?</label>
+					<input type="range" id="spiceLevel" min="0" max="100" step="10">
+				</form>
+				<section class="output">
+				</section>
+			</div>
 		</main>
 		<footer>
 			<p><i class="fa fa-copyright"></i> 2017 <a href="http://colmwhitford.com">Colm Whitford</a> <a href="http://emmakinch.com">Emma Kinch<a> <a href="http://juneepstein.com">June Epstein</a> | Powered by <a href="http://www.spotify.com">Spotify</a></p>
 		</footer>
-	</div>
+	</div> <!-- /.content -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 	<script src="public/scripts/main.js"></script>
