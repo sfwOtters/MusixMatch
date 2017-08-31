@@ -1,0 +1,48 @@
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "small" {
+    @media (max-width: 480px) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "medium" {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "large" {
+    @media (max-width: 940px) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "xlarge" {
+    @media (min-width: 1500px) {
+      @content;
+    }
+  }
+
+
+  @else {
+    @media ($breakpoint) {
+      @content;
+    }
+  }
+}
+
+@mixin workSans($size, $weight){
+  font-family: 'Work Sans', sans-serif;
+  font-size: ($size/10) * 1rem;
+  font-weight: $weight;
+}
+@mixin workSansBold($size){
+  font-family: 'Work Sans', sans-serif;
+  font-size: ($size/10) * 1rem;
+  font-weight: 700;
+}
+@mixin helvetica($size, $weight){
+  font-family: 'Helvetica', sans-serif;
+  font-size: ($size/10) * 1rem;
+  font-weight: $weight;
+}
