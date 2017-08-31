@@ -5,6 +5,7 @@ musicApp.notGenres = ['toplists', 'chill', 'mood', 'party', 'workout', 'focus', 
 musicApp.spiceCount = 0;
 musicApp.desiredSpice = 0;
 musicApp.URI = '';
+musicApp.genre = '';
 musicApp.authorization = function() {
 	$.ajax({
 		url: 'http://proxy.hackeryou.com',
@@ -68,12 +69,12 @@ musicApp.getPlaylists = function(genre) {
 			limit: 50
 		}
 	}).then(function(res) {
-		console.log(res.playlists.items);
 		musicApp.getRandomPlaylist(res.playlists.items)
 	})
 };
 
 musicApp.getRandomPlaylist = function(playlists) {
+	console.log(playlists.length)
 	let randomIndex = Math.floor(Math.random() * playlists.length);
 	let chosenPlaylist = playlists[randomIndex].tracks.href;
 	musicApp.URI = playlists[randomIndex].uri;
@@ -88,30 +89,31 @@ musicApp.getTracks = function(playlist) {
 		dataType: 'JSON',
 		headers
 	}).then(function(res){
-		console.log(res);
 		musicApp.checkTracks(res)
 	})
 };
 musicApp.checkTracks = (res) => {
+	console.log(res)
 	let tracks = res.items;
 	tracks.forEach(function (track){
 		if(track.track.explicit === true){
 			musicApp.spiceCount += 1;
 		}		
 	})
-	// console.log(musicApp.spiceCount)
+	console.log(musicApp.spiceCount)
 	let spicyPercentage = Math.floor((musicApp.spiceCount / tracks.length) * 100);
 	if(spicyPercentage <= musicApp.desiredSpice){
 		// console.log('working')
 		musicApp.displayPlaylist();
 	} else {
-		musicApp.getRandomPlaylist();
+		musicApp.spiceCount = 0;
+		musicApp.getPlaylists(musicApp.genre);
 	}
-	// console.log(spicyPercentage);
+	console.log(spicyPercentage);
 };
 musicApp.displayPlaylist = () => {
-	$('.output').append(`<iframe src="https://open.spotify.com/embed?uri=${musicApp.URI}&view=coverart"
-        frameborder="0" allowtransparency="true"></iframe>`)
+	// $('.output').append(`<iframe src="https://open.spotify.com/embed?uri=${musicApp.URI}&view=coverart"
+ //        frameborder="0" allowtransparency="true"></iframe>`)
 }
 
 // if explicit is = to true add 1 to the spice count
@@ -126,10 +128,10 @@ musicApp.displayPlaylist = () => {
 musicApp.events = function(){
 	$('form').on('submit',function(event){
 		event.preventDefault();
-		let genre = $('#genres').val();	 
+		musicApp.genre = $('#genres').val();	 
 		musicApp.desiredSpice = $('#spiceLevel').val();
 		console.log(musicApp.desiredSpice);
-		musicApp.getPlaylists(genre);
+		musicApp.getPlaylists(musicApp.genre);
 		musicApp.spiceCount = 0;
 	});
 };
