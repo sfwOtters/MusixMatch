@@ -6,6 +6,7 @@ musicApp.spiceCount = 0;
 musicApp.desiredSpice = 0;
 musicApp.URI = '';
 musicApp.genre = '';
+musicApp.attempt = 0;
 musicApp.authorization = function() {
 	$.ajax({
 		url: 'http://proxy.hackeryou.com',
@@ -50,7 +51,7 @@ musicApp.getCategories = function() {
 musicApp.updateSelect = function(data) {
 	data.forEach(function (element){
 		if(musicApp.notGenres.includes(element.id) === false){
-			$('select').append(`<option value="${element.id}">${element.name}</option>`)
+			$('select').append(`<option class="genre" value="${element.id}">${element.name}</option>`)
 		}
 	})
 }
@@ -109,13 +110,23 @@ musicApp.checkTracks = (res) => {
 		musicApp.displayPlaylist();
 	} else {
 		musicApp.spiceCount = 0;
-		musicApp.getPlaylists(musicApp.genre);
+		musicApp.attempt++;
+		console.log('attempt', musicApp.attempt);
+		if (musicApp.attempt < 50) {
+			musicApp.getPlaylists(musicApp.genre);
+		}else{
+			musicApp.displayError();
+		}
 	}
 	console.log(spicyPercentage);
 };
 musicApp.displayPlaylist = () => {
 	$('.output').append(`<iframe src="https://open.spotify.com/embed?uri=${musicApp.URI}&view=list"
         frameborder="0" allowtransparency="true" height='500px' width='500px'></iframe>`);
+}
+musicApp.displayError = () => {
+	let genre = $('.genre:selected').text();
+	$('.output').html(`<p>There is no ${genre} playlist at a ${musicApp.desiredSpice} Spice level</p>`);
 }
 
 // if explicit is = to true add 1 to the spice count
@@ -135,6 +146,7 @@ musicApp.events = function(){
 		console.log(musicApp.desiredSpice);
 		musicApp.getPlaylists(musicApp.genre);
 		musicApp.spiceCount = 0;
+		musicApp.attempt = 0;
 	});
 };
 
