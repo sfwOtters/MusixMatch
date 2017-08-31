@@ -1,6 +1,51 @@
 .spiceSelect{
 	margin-top: 25px;
 }
+
+
+label {
+	display: block;
+	clear: both;
+	color: $tsfwBlack;
+}
+
+.spiceBox{
+	background: rgba(201,122,122,0.9);
+	clear: both;
+	padding: 20px 10px;
+	border-radius: 20px;
+	label{
+		text-align-last: center;
+		padding: 5px 0 20px 0;
+	}
+}
+
+#spiceLevel{
+	appearance: none;
+	display: block;
+	height: 5px;
+	width: 100%;
+	background: linear-gradient(to right, white, rgba(136, 145, 239, 0.9) );
+}
+
+input[type=range]::-webkit-slider-thumb {
+  border: 1px solid #f5ffff;
+  height: 30px;
+  width: 16px;
+  border-radius: 3px;
+  background: #f5ffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+.select-label {
+	position:absolute;
+	left:-10000px;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+}
 #genres{
 	appearance: none;
 	padding: 15px 20px;
@@ -24,7 +69,7 @@
 	padding: 15px 20px;
 	background: rgba(96, 221, 181, 0.9) ;
 	border: none;
-	border-left: 1px solid $tsfwBlack;
+	// border-left: 1px solid $tsfwBlack;
 	appearance: none;
 	border-top-left-radius: 0;
 	border-top-right-radius: 20px;
@@ -33,25 +78,4 @@
 	color: $tsfwBlack;
 	margin: 10px 0;
 
-}
-#spiceLevel{
-	display: block;
-	width: 100%;
-	background: transparent;
-
-}
-.spiceBox{
-	background: rgba(201,122,122,0.9);
-	clear: both;
-	padding: 20px 10px;
-	border-radius: 20px;
-	label{
-		text-align-last: center;
-		margin: 10px 0;
-	}
-}
-label{
-	display: block;
-	clear: both;
-	color: $tsfwBlack;
 }

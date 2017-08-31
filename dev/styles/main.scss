@@ -56,8 +56,8 @@ header {
 	min-height: 30vh;
 }
 
-main {
-	min-height: 60vh;
+.main {
+	min-height: 65vh;
 }
 
 iframe {
@@ -66,9 +66,23 @@ iframe {
 }
 
 footer {
-	min-height: 10vh;
+	text-align: center;
+	min-height: 5vh;
 	@include helvetica(12, 400)
 	p {
 		margin: 0;
 	}
+}
+
+.spotify{
+	height: 0;
+	width: 0;
+}
+
+.spotify img {
+	margin-left: 2px;
+	width: 20px;
+	height: 20px;
+	position: relative;
+	transform: translateY(30%);
 }
