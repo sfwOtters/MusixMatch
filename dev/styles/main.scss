@@ -8,8 +8,22 @@
 	margin: 0 auto;
 }
 
-.content {
-	height: 100vh;
+.wrapper {
+	min-height: 100vh;
+}
+
+h1 {
+	margin: 0;
+	@include workSansBold(50);
+}
+
+h2 {
+	margin: 0;
+	@include helvetica(30, 400)
+}
+
+form, .output {
+	@include helvetica(16, 400)
 }
 
 body {
@@ -18,7 +32,26 @@ body {
 	background-size: cover;
 }
 
+header {
+	min-height: 30vh;
+	h1 {
+
+	}
+}
+
+main {
+	min-height: calc(70vh - 5vh);
+}
+
 iframe {
 	width: 400px;
 	height: 480px;
+}
+
+footer {
+	min-height: 5vh;
+	@include helvetica(12, 400)
+	p {
+		margin: 0;
+	}
 }
