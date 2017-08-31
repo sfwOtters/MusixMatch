@@ -69,6 +69,7 @@ musicApp.getPlaylists = function(genre) {
 			limit: 50
 		}
 	}).then(function(res) {
+		console.log(res)
 		musicApp.getRandomPlaylist(res.playlists.items)
 	})
 };
@@ -78,8 +79,9 @@ musicApp.getRandomPlaylist = function(playlists) {
 	let randomIndex = Math.floor(Math.random() * playlists.length);
 	let chosenPlaylist = playlists[randomIndex].tracks.href;
 	musicApp.URI = playlists[randomIndex].uri;
-	console.log(musicApp.URI);
+	// console.log(musicApp.URI);
 	musicApp.getTracks(chosenPlaylist);
+	console.log(chosenPlaylist)
 };
 
 musicApp.getTracks = function(playlist) {
@@ -100,9 +102,9 @@ musicApp.checkTracks = (res) => {
 			musicApp.spiceCount += 1;
 		}		
 	})
-	console.log(musicApp.spiceCount)
+	console.log(musicApp.desiredSpice)
 	let spicyPercentage = Math.floor((musicApp.spiceCount / tracks.length) * 100);
-	if(spicyPercentage <= musicApp.desiredSpice){
+	if(spicyPercentage <= musicApp.desiredSpice  && spicyPercentage >= musicApp.desiredSpice - 10){
 		// console.log('working')
 		musicApp.displayPlaylist();
 	} else {
@@ -112,8 +114,8 @@ musicApp.checkTracks = (res) => {
 	console.log(spicyPercentage);
 };
 musicApp.displayPlaylist = () => {
-	// $('.output').append(`<iframe src="https://open.spotify.com/embed?uri=${musicApp.URI}&view=coverart"
- //        frameborder="0" allowtransparency="true"></iframe>`)
+	$('.output').append(`<iframe src="https://open.spotify.com/embed?uri=${musicApp.URI}&view=list"
+        frameborder="0" allowtransparency="true" height='500px' width='500px'></iframe>`);
 }
 
 // if explicit is = to true add 1 to the spice count
