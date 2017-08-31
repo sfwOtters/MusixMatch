@@ -5,8 +5,17 @@
 	margin: 0 auto;
 }
 
-
+.content {
+	height: 100vh;
+}
 
 body {
-	background: purple;
+	background-image: url(../../assets/background-image.jpg);
+	background-attachment: fixed; 
+	background-size: cover;
+}
+
+iframe {
+	width: 400px;
+	height: 480px;
 }
