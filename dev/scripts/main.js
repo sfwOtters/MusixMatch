@@ -122,7 +122,7 @@ musicApp.checkTracks = (res) => {
 };
 musicApp.displayPlaylist = () => {
 	$('.output').append(`<iframe src="https://open.spotify.com/embed?uri=${musicApp.URI}&view=list"
-        frameborder="0" allowtransparency="true" height='500px' width='360'px'></iframe>`);
+        frameborder="0" allowtransparency="true" ></iframe>`);
 }
 musicApp.displayError = () => {
 	let genre = $('.genre:selected').text();
