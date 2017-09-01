@@ -136,10 +136,23 @@ musicApp.displayError = () => {
 // if equlivent or less display playslist
 // if greater than user choice generate another playlist and repeat
 // if nothing is bland enough display error message for user
-musicApp.colorChilis = (chiliValue) => {
-	$(`chili${chiliValue}`).addClass('redChili');
-	console.log('working');
-}
+musicApp.colorChilis = function(chiliValue) {
+	$('svg').removeClass('redChili');
+	if(chiliValue === '0'){
+		$('#chili0').addClass('redChili');
+	} else if(chiliValue === '1') {	
+		$('#chili0, #chili1').addClass('redChili');
+	} else if(chiliValue === '2') {
+		$('#chili0, #chili1, #chili2').addClass('redChili');
+	} else if(chiliValue === '3') {
+		$('#chili0, #chili1, #chili2, #chili3').addClass('redChili');
+	} else if(chiliValue === '4') {
+
+		$('#chili0, #chili1, #chili2, #chili3, #chili4').addClass('redChili');
+	} else if(chiliValue === '5') {
+		$('#chili0, #chili1, #chili2, #chili3, #chili4, #chili5').addClass('redChili');
+	};
+};
 // if chili value is equal to 0, color first chili
 // if 1, color chili1 and chili2
 // if 2, color chili1 chili2 chili3
@@ -157,7 +170,7 @@ musicApp.events = function(){
 	$('#spiceLevel').on('change', function() {
 		let chiliValue = $('#spiceLevel').val();
 		musicApp.colorChilis(chiliValue);
-	})
+	});
 };
 
 musicApp.init = function(){
