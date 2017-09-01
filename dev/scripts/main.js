@@ -122,7 +122,7 @@ musicApp.checkTracks = (res) => {
 };
 musicApp.displayPlaylist = () => {
 	$('.output').append(`<iframe src="https://open.spotify.com/embed?uri=${musicApp.URI}&view=list"
-        frameborder="0" allowtransparency="true" ></iframe>`);
+     frameborder="0" allowtransparency="true" ></iframe>`);
 }
 musicApp.displayError = () => {
 	let genre = $('.genre:selected').text();
@@ -166,6 +166,11 @@ musicApp.events = function(){
 		musicApp.getPlaylists(musicApp.genre);
 		musicApp.spiceCount = 0;
 		musicApp.attempt = 0;
+		if ($(window).width() >= 940) {
+			$('.spiceBox').addClass('spiceBox_PlaylistLoad').removeClass('spiceBox-onLoad');
+			$('.genreSelection').addClass('genreSelection_PlaylistLoad').removeClass('genreSelection-onLoad');
+			$('.spiceSelect').addClass('spiceSelect_PlaylistLoad').removeClass('spiceSelect-onLoad')
+		};
 	});
 	$('#spiceLevel').on('input', function() {
 		let chiliValue = $('#spiceLevel').val();
