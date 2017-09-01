@@ -1,4 +1,3 @@
-
 let headers = {};
 var musicApp = {};
 musicApp.notGenres = ['toplists', 'chill', 'mood', 'party', 'workout', 'focus', 'decades', 'dinner', 'sleep', 'popculture', 'romance', 'travel', 'gaming', 'comedy'];
