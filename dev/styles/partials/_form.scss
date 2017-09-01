@@ -18,7 +18,7 @@ label {
 }
 
 .spiceBox{
-	background: rgba(96, 221, 181, 0.9);
+	background: rgba(96, 221, 181, 0.7);
 	clear: both;
 	padding: 20px 10px;
 	border-radius: 20px;
@@ -28,7 +28,6 @@ label {
 	}
 	
 }
-
 .spiceBox-onLoad {
 	@media (min-width: 940px) {
 		max-width: 75%;
@@ -73,6 +72,12 @@ label {
 		z-index: 100;
 		background-color: $tsfwRed;
 
+	}
+	@media (min-width: 940px) {
+		border: 10px solid $tsfwRed;
+		&::before{
+			height: 10px;
+		}
 	}
 }
 .redChili {
@@ -128,8 +133,7 @@ input[type=range]::-webkit-slider-thumb {
 .genre-select {
 	appearance: none;
 	padding: 15px 20px;
-	background: rgba(96, 221, 181, 0.9) ;
-	// border: 2px solid $tsfwGreen;
+	background: rgba(96, 221, 181, 0.7) ;
 	border: none;
 	border-right: 1px solid $tsfwBlack;
 	display: block;
@@ -149,7 +153,7 @@ input[type=range]::-webkit-slider-thumb {
 	width: 40%;
 	float: left;
 	padding: 15px 20px;
-	background: rgba(96, 221, 181, 0.9) ;
+	background: rgba(96, 221, 181, 0.7) ;
 	border: none;
 	// border-left: 1px solid $tsfwBlack;
 	appearance: none;
