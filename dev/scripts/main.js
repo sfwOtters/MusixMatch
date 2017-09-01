@@ -136,8 +136,13 @@ musicApp.displayError = () => {
 // if equlivent or less display playslist
 // if greater than user choice generate another playlist and repeat
 // if nothing is bland enough display error message for user
-
-
+musicApp.colorChilis = (chiliValue) => {
+	$(`chili${chiliValue}`).addClass('redChili');
+	console.log('working');
+}
+// if chili value is equal to 0, color first chili
+// if 1, color chili1 and chili2
+// if 2, color chili1 chili2 chili3
 musicApp.events = function(){
 	$('form').on('submit',function(event){
 		$('.output').empty();
@@ -149,6 +154,10 @@ musicApp.events = function(){
 		musicApp.spiceCount = 0;
 		musicApp.attempt = 0;
 	});
+	$('#spiceLevel').on('change', function() {
+		let chiliValue = $('#spiceLevel').val();
+		musicApp.colorChilis(chiliValue);
+	})
 };
 
 musicApp.init = function(){
