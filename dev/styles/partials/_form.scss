@@ -23,7 +23,7 @@ label {
 	padding: 0;
 	text-align: center;
 }
-svg {
+.chili {
 	width: calc(100% / 6);
 	padding: 0;
 	display: block;
@@ -31,7 +31,27 @@ svg {
 	fill: $tsfwBlack;
 }
 #chili0{
-	fill: $tsfwRed;
+	fill: $tsfwBlack;
+	border: 5px solid $tsfwRed;
+	border-radius: 100%;
+	position: relative;
+}
+.noBox{
+	position: relative;
+	&::before{
+		content: '';
+		position: absolute;
+		left: 0;
+		// right: 0;
+		top:50%;
+		transform: translateY(-50%) rotate(45deg);
+		height: 5px;
+		width: 95%;
+		z-index: 100;
+
+		background-color: $tsfwRed;
+
+	}
 }
 .redChili {
 	fill: $tsfwRed;

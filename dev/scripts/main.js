@@ -167,7 +167,7 @@ musicApp.events = function(){
 		musicApp.spiceCount = 0;
 		musicApp.attempt = 0;
 	});
-	$('#spiceLevel').on('change', function() {
+	$('#spiceLevel').on('input', function() {
 		let chiliValue = $('#spiceLevel').val();
 		musicApp.colorChilis(chiliValue);
 	});
