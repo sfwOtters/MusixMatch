@@ -1,5 +1,14 @@
-.spiceSelect{
+.spiceSelect {
 	margin-top: 25px;
+	
+}
+
+.spiceSelect_PlaylistLoad {
+	@media (min-width: 940px) {
+		display: inline-block;
+		width: 49%;
+		margin-right: 1%;
+	}
 }
 
 label {
@@ -17,10 +26,24 @@ label {
 		text-align-last: center;
 		padding: 5px 0 20px 0;
 	}
+	
+}
+
+.spiceBox-onLoad {
+	@media (min-width: 940px) {
+		max-width: 75%;
+		margin: 0 auto;
+	}
+}
+
+.spiceBox_PlaylistLoad {
+	@media (min-width: 940px) {
+		max-width: 100%;
+	}
 }
 .chiliBox {
 	margin: 0 auto;
-	padding: 0;
+	padding-bottom: 10px;
 	text-align: center;
 }
 .chili {
@@ -32,23 +55,22 @@ label {
 }
 #chili0{
 	fill: $tsfwBlack;
-	border: 5px solid $tsfwRed;
-	border-radius: 100%;
-	position: relative;
+		z-index: -1;
 }
 .noBox{
 	position: relative;
+	border: 5px solid $tsfwRed;
+	border-radius: 100%;
 	&::before{
 		content: '';
 		position: absolute;
 		left: 0;
-		// right: 0;
-		top:50%;
+		right: 0;
+		top:47%;
 		transform: translateY(-50%) rotate(45deg);
 		height: 5px;
-		width: 95%;
+		width: 105%;
 		z-index: 100;
-
 		background-color: $tsfwRed;
 
 	}
@@ -58,6 +80,8 @@ label {
 }
 .rangeLabel{
 	margin-top: 8%;
+	text-align: center;
+	// text-transform: capitalize;
 }
 #spiceLevel{
 	appearance: none;
@@ -86,7 +110,22 @@ input[type=range]::-webkit-slider-thumb {
 	height:1px;
 	overflow:hidden;
 }
-#genres{
+
+.genreSelection-onLoad {
+	@media (min-width: 940px) {
+		width: 75%;
+		margin: 0 auto;
+	}
+}
+
+.genreSelection_PlaylistLoad {
+	@media (min-width: 940px) {
+		width: 100%;
+
+	}
+}
+
+.genre-select {
 	appearance: none;
 	padding: 15px 20px;
 	background: rgba(96, 221, 181, 0.9) ;
@@ -103,7 +142,10 @@ input[type=range]::-webkit-slider-thumb {
 	color: $tsfwBlack;
 	margin: 10px 0;
 }
-#genreSubmit{
+
+
+
+.genreSubmit {
 	width: 40%;
 	float: left;
 	padding: 15px 20px;

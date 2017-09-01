@@ -1,7 +1,6 @@
 @import 'partials/setup';
 @import 'partials/variables';
 @import 'partials/mixins';
-
 @import 'partials/form';
 
 html {
@@ -19,14 +18,28 @@ html {
 	margin: 0 auto;
 }
 
+header {
+	min-height: 30vh;
+	@media (min-width: 940px) {
+		padding-top: 40px;
+	}
+}
+
 h1 {
 	margin: 0;
 	@include workSansBold(50);
 	letter-spacing: 1.5rem;
 	color: $tsfwBlack;
+	@media (min-width: 940px) {
+		@include workSansBold(70);
+		text-align: center;	
+	}
 }
 .break {
 	display: block;
+	@media (min-width: 940px) {
+		display: inline;	
+	}
 }
 .spicyBreak {
 	color: $tsfwRed;
@@ -37,6 +50,11 @@ h2 {
 	@include helvetica(25, 400);
 	letter-spacing: 0.2rem;
 	color: $tsfwRed;
+	@media (min-width: 940px) {
+		padding-top: 15px;
+		@include helvetica(35, 400);
+		text-align: center;
+	}
 }
 
 
@@ -49,20 +67,34 @@ body {
 	background-attachment: fixed; 
 	background-repeat: no-repeat;
 	background-position: left 70% top;
-	background-size: 300%;
+	background-size: cover;
 }
 
-header {
-	min-height: 30vh;
-}
+
 
 .main {
 	min-height: 65vh;
 }
 
+.output {
+	@media (min-width: 940px) {
+		width: 49%;
+		margin-left: 1%;
+		float: right;
+	}
+}
+
 iframe {
-	width: 400px;
-	height: 480px;
+	width: 95%;
+	height: 380px;
+	display: block;
+	margin: 0 auto;
+	border-radius: 20px;
+	@media (min-width: 940px) {
+		width: 100%;
+		padding-top: 25px;
+		border-radius: 20px;
+	}
 }
 
 footer {
@@ -86,3 +118,7 @@ footer {
 	position: relative;
 	transform: translateY(30%);
 }
+
+
+
+
