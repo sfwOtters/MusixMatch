@@ -70,8 +70,6 @@ body {
 	background-size: cover;
 }
 
-
-
 .main {
 	min-height: 65vh;
 }
@@ -81,9 +79,22 @@ body {
 		width: 49%;
 		margin-left: 1%;
 		float: right;
+		position: relative;
 	}
 }
-
+.playlistError {
+	font-size: 2rem;
+	color: $tsfwRed;
+	padding: 40px;
+	background: rgba(82,79,79,0.8);
+	border-radius: 20px;
+	@media (min-width: 940px) {
+		font-size: 3rem;
+		position: absolute;
+		top: 50%;
+		transform: translateY(50%);
+	}
+}
 iframe {
 	width: 95%;
 	height: 380px;
@@ -98,17 +109,30 @@ iframe {
 }
 
 footer {
+	color: $tsfwBlack;
 	text-align: center;
 	min-height: 5vh;
-	@include helvetica(12, 400)
+	border-top: 1px solid rgba(82,79,79,0.2);
+	padding-top: 20px;
+	@include helvetica(12, 400);
 	p {
 		margin: 0;
 	}
 }
-
+.spotifySpan{
+	display: block;
+}
+.creatorLinks{
+	color: $tsfwBlack;
+	margin: 5px;
+}
+.creatorLinks:hover{
+	color: $tsfwBlue;
+}
 .spotify{
 	height: 0;
 	width: 0;
+	padding-bottom: 20px;
 }
 
 .spotify img {
