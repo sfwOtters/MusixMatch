@@ -10,7 +10,7 @@ musicApp.genre = '';
 musicApp.attempt = 0;
 musicApp.authorization = function () {
 	$.ajax({
-		url: 'http://proxy.hackeryou.com',
+		url: 'https://proxy.hackeryou.com',
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
