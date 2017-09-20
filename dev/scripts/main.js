@@ -146,6 +146,11 @@ musicApp.events = function(){
 			$('.genreSelection').addClass('genreSelection_PlaylistLoad').removeClass('genreSelection-onLoad');
 			$('.spiceSelect').addClass('spiceSelect_PlaylistLoad').removeClass('spiceSelect-onLoad')
 		};
+		if ($(window).resize() >= 940) {
+			$('.spiceBox').addClass('spiceBox_PlaylistLoad').removeClass('spiceBox-onLoad');
+			$('.genreSelection').addClass('genreSelection_PlaylistLoad').removeClass('genreSelection-onLoad');
+			$('.spiceSelect').addClass('spiceSelect_PlaylistLoad').removeClass('spiceSelect-onLoad')
+		};
 	});
 	$('#spiceLevel').on('input', function() {
 		let chiliValue = $('#spiceLevel').val();
